@@ -1,6 +1,8 @@
 import { Note } from "../models/User.models.js";
+import{username,userEmail} from "../getData.js";
 
 const createNote = async (req,res)=>{
+
     const data = await Note.create({
         title: req.body.title,
         content: req.body.content

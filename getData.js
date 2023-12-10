@@ -16,11 +16,17 @@ const auth = getAuth(app);
 
 const user = auth.currentuser;
 
+let username = null;
+let userEmail = null;
+
+
 function updateUserProfile(user){
-    const username = user.displayName;
-    const userEmail = user.email;
-    
+    username = user.displayName;
+    userEmail = user.email;
+
+    document.getElementById('UserName').textContent = username;
 }
+
 
 onAuthStateChanged(auth,(user)=>{
     if(user){
@@ -43,9 +49,9 @@ form.addEventListener('submit',(e)=>{
     const content = String(document.querySelector('#content').value);
 
     const div = document.createElement('div');
-    const one = document.createElement('h1');
+    const one = document.createElement('h2');
     one.textContent = title;
-    const two = document.createElement('h2');
+    const two = document.createElement('li');
     two.textContent = content;
     
     div.appendChild(one);
@@ -53,4 +59,9 @@ form.addEventListener('submit',(e)=>{
 
     body.appendChild(div);
 });
+
+export{
+    username,
+    userEmail
+}
 
